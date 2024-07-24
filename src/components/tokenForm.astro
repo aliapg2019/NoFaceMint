@@ -1,0 +1,207 @@
+---
+import { Icon } from "astro-icon/components"
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Token</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <form id="token-form" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md mt-10">
+    <div class="relative z-0 w-full mb-5 group">
+      <input type="text" name="token-name" id="token-name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="token-name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Token Name</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <input type="text" name="token-symbol" id="token-symbol" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="token-symbol" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Token Symbol</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <input type="number" name="initial-supply" id="initial-supply" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="initial-supply" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Initial Supply</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <input type="number" name="decimals" id="decimals" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+      <label for="decimals" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Decimals</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <textarea name="token-description" id="token-description" rows="3" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required></textarea>
+      <label for="token-description" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Token Description</label>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <label class="peer-focus:font-medium text-sm text-gray-500">Revoke Mint Authority</label>
+      <div class="flex items-center mt-2">
+        <input type="radio" id="mint-yes" name="mint-authority" value="true" class="mr-2" required>
+        <label for="mint-yes" class="mr-4">Yes</label>
+        <input type="radio" id="mint-no" name="mint-authority" value="false" class="mr-2" required>
+        <label for="mint-no">No</label>
+      </div>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <label class="peer-focus:font-medium text-sm text-gray-500">Revoke Freeze Authority</label>
+      <div class="flex items-center mt-2">
+        <input type="radio" id="freeze-yes" name="freeze-authority" value="true" class="mr-2" required>
+        <label for="freeze-yes" class="mr-4">Yes</label>
+        <input type="radio" id="freeze-no" name="freeze-authority" value="false" class="mr-2" required>
+        <label for="freeze-no">No</label>
+      </div>
+    </div>
+    <div class="relative z-0 w-full mb-5 group">
+      <input type="file" id="token-logo" class="block w-full text-sm text-gray-900 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer pt-2" />
+      <label for="token-logo" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Token Logo</label>
+    </div>
+    <div class="mb-5">
+      <div id="img-url"></div>
+      <img id="img-display" src=""  alt="Token Logo Preview" style="display: none;" />
+      <div id="error-handling" class="text-red-600"></div>
+    </div>
+    <div id="loading-spinner" class="hidden flex justify-center items-center">
+      <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
+    </div>
+    <button type="submit" class="w-full py-2.5 px-5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">Submit</button>
+  </form>
+
+  <div id="notification" class="fixed top-4 right-4 p-4 rounded-md shadow-lg text-white hidden"></div>
+
+   <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loader {
+      border-top-color: #3498db;
+      animation: spin 1s linear infinite;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('token-form');
+      const imgInput = document.getElementById('token-logo');
+      const imgUrl = document.getElementById('img-url');
+      const imgDisplay = document.getElementById('img-display');
+      const errorHandling = document.getElementById('error-handling');
+      const notification = document.getElementById('notification');
+      const loadingSpinner = document.getElementById('loading-spinner');
+
+      async function uploadToIPFS(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const metadata = JSON.stringify({ name: 'Token Image' });
+        formData.append('pinataMetadata', metadata);
+
+        const options = JSON.stringify({ cidVersion: 0 });
+        formData.append('pinataOptions', options);
+
+        try {
+          const res = await axios.post('https://api.pinata.cloud/pinning/pinFileToIPFS', formData, {
+            maxContentLength: 'Infinity',
+            headers: {
+              'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
+              Authorization: `Bearer ${import.meta.env.PINATA_JWT}`, // استفاده از متغیر محیطی
+            },
+          });
+          return `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`;
+        } catch (error) {
+          console.error('Error uploading to IPFS:', error);
+          throw error;
+        }
+      }
+
+      async function uploadTokenDataToIPFS(tokenData) {
+        try {
+          const res = await axios.post('https://api.pinata.cloud/pinning/pinJSONToIPFS', tokenData, {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${import.meta.env.PINATA_JWT}`, // استفاده از متغیر محیطی
+            },
+          });
+          return `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`;
+        } catch (error) {
+          console.error('Error uploading token data to IPFS:', error);
+          throw error;
+        }
+      }
+
+      function showNotification(message, isError = false) {
+        notification.textContent = message;
+        notification.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg text-white ${isError ? 'bg-red-600' : 'bg-green-600'} block`;
+        setTimeout(() => {
+          notification.className = 'hidden';
+        }, 3000);
+      }
+
+      imgInput.addEventListener('change', async (e) => {
+        e.preventDefault();
+        const file = e.target.files[0];
+
+        loadingSpinner.classList.remove('hidden');
+
+        try {
+          const url = await uploadToIPFS(file);
+          imgUrl.textContent = url;
+          imgDisplay.src = url;
+          imgDisplay.style.display = 'block';
+
+          showNotification('Image uploaded successfully');
+        } catch (error) {
+          errorHandling.textContent = 'Error uploading image to IPFS';
+          showNotification('Error uploading image to IPFS', true);
+        } finally {
+          loadingSpinner.classList.add('hidden');
+        }
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        const tokenData = {
+          tokenName: formData.get('token-name'),
+          tokenSymbol: formData.get('token-symbol'),
+          initialSupply: formData.get('initial-supply'),
+          decimals: formData.get('decimals'),
+          tokenDescription: formData.get('token-description'),
+          mintAuthority: formData.get('mint-authority'),
+          freezeAuthority: formData.get('freeze-authority'),
+          tokenLogo: imgUrl.textContent,
+        };
+
+        let errors = {};
+
+        if (!tokenData.tokenName) errors.tokenName = 'Token Name is required';
+        if (!tokenData.tokenSymbol) errors.tokenSymbol = 'Token Symbol is required';
+        if (!tokenData.initialSupply) errors.initialSupply = 'Initial Supply is required';
+        if (!tokenData.decimals) errors.decimals = 'Decimals is required';
+        if (!tokenData.tokenDescription) errors.tokenDescription = 'Token Description is required';
+        if (!tokenData.mintAuthority) errors.mintAuthority = 'Mint Authority is required';
+        if (!tokenData.freezeAuthority) errors.freezeAuthority = 'Freeze Authority is required';
+        if (!tokenData.tokenLogo) errors.tokenLogo = 'Token Logo is required';
+
+        if (Object.keys(errors).length > 0) {
+          console.error('Form validation errors:', errors);
+          alert(JSON.stringify(errors));
+          return;
+        }
+
+        loadingSpinner.classList.remove('hidden');
+
+        try {
+          const ipfsUrl = await uploadTokenDataToIPFS(tokenData);
+          console.log('Token Data IPFS URL:', ipfsUrl);
+          showNotification('Token data uploaded successfully');
+        } catch (error) {
+          errorHandling.textContent = 'Error uploading token data to IPFS';
+          showNotification('Error uploading token data to IPFS', true);
+        } finally {
+          loadingSpinner.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
