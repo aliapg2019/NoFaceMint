@@ -4,18 +4,18 @@ import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-
+import TokenForm from "./tokenForm.astro";
 // Filter team entries with 'draft: false' & date before current date
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 ---
 
-<Layout title="About">
+<Layout title="About Us | NoFaceMint">
   <Container>
     <Sectionhead>
       <Fragment slot="title">About Us</Fragment>
-      <Fragment slot="desc">Meet the team behind TokenCreator.</Fragment>
+      <Fragment slot="desc">Meet the team behind NoFaceMint.</Fragment>
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
@@ -23,10 +23,40 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
         Innovating Token Creation with Simplicity
       </h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        Our diverse and passionate team is dedicated to making token creation accessible for everyone. With a global perspective and a commitment to excellence, we strive to bring you a seamless and intuitive experience.
+        At <strong>NoFaceMint</strong>, we pride ourselves on pushing the boundaries of <a href=`${Astro.site}tokenForm` class="text-black">token creation</a> technology. Our mission is to simplify the process of <a href=`${Astro.site}tokenForm` class="text-black">creating tokens</a>, making it accessible to everyone, regardless of their technical expertise. Our innovative platform ensures that even those with minimal coding knowledge can <a href=`${Astro.site}tokenForm` class="text-black">create, manage, and deploy tokens</a> effortlessly.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Our diverse and passionate team is dedicated to making <a href=`${Astro.site}tokenForm` class="text-black">token creation</a> accessible for everyone. With a global perspective and a commitment to excellence, we strive to bring you a seamless and intuitive experience. Our team is composed of experts from various fields including blockchain technology, software development, finance, and marketing. This diversity allows us to approach challenges from different angles and deliver the best solutions to our users.
+      </p>
+      <h3 class="font-bold text-2xl text-gray-800 mt-6">
+        Global Perspective and Commitment to Excellence
+      </h3>
+      <p class="text-lg leading-relaxed text-slate-500">
+        NoFaceMint operates on a global scale, with team members located in different parts of the world. This international presence allows us to understand and address the unique needs of our users in various regions. We believe that innovation thrives in a diverse environment, and our team’s varied backgrounds and perspectives contribute to our ability to innovate and improve continuously.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Our commitment to excellence is evident in every aspect of our work. From the user-friendly design of our platform to the high-security standards we maintain, we ensure that our users have the best experience possible. We constantly update and refine our platform based on user feedback and the latest technological advancements in the blockchain industry.
+      </p>
+      <h3 class="font-bold text-2xl text-gray-800 mt-6">
+        Seamless and Intuitive Experience
+      </h3>
+      <p class="text-lg leading-relaxed text-slate-500">
+        <a href=`${Astro.site}tokenForm` class="text-black">Creating tokens</a> with NoFaceMint is not only easy but also enjoyable. Our intuitive interface guides users through each step of the <a href=`${Astro.site}tokenForm` class="text-black">token creation process</a>, providing helpful tips and resources along the way. Whether you are a startup looking to <a href=`${Astro.site}tokenForm` class="text-black">launch a new cryptocurrency</a>, a developer experimenting with blockchain technology, or an entrepreneur seeking innovative ways to raise capital, NoFaceMint is designed to meet your needs.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        We understand that security is a top priority for our users. That’s why we have implemented robust security measures to protect your data and assets. Our platform uses state-of-the-art encryption and follows industry best practices to ensure the highest level of security.
+      </p>
+      <h3 class="font-bold text-2xl text-gray-800 mt-6">
+        Join Us in Revolutionizing Token Creation
+      </h3>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Join us on our journey to revolutionize <a href=`${Astro.site}tokenForm` class="text-black">token creation</a>. At NoFaceMint, we are not just building a platform; we are creating a community of innovators and visionaries who are passionate about blockchain technology. Whether you are a seasoned developer or new to the world of cryptocurrencies, NoFaceMint offers the tools and support you need to succeed.
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Explore our platform today and discover how easy and powerful <a href=`${Astro.site}tokenForm` class="text-black">token creation</a> can be. With NoFaceMint, the future of tokenization is at your fingertips.
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+    <!-- <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
       {
         publishedTeamMembers.map((teamMemberEntry) => (
           <div class="group">
@@ -50,6 +80,6 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
           </div>
         ))
       }
-    </div>
+    </div> -->
   </Container>
 </Layout>
