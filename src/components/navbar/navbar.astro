@@ -41,7 +41,7 @@ const menuitems = [
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="text-lg flex">
           <div>
-            <Image src={logo} alt="Logo" width={100}>
+            <Image src={logo} alt="Logo" width={100} >
 
           </div>
           <div class="mt-10">
@@ -85,16 +85,17 @@ const menuitems = [
           }
         </ul>
         <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="/login" style="muted" block size="md">Log in</Link>
-          <Link href="/signup" size="md" block>Sign up</Link>
+          <!-- <Link href="/login" style="muted" block size="md">Log in</Link> -->
+          <Link href="/signup" size="md" block>Connect Wallet</Link>
         </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <a href="/login">Log in</a>
-        <Link href="/signup" size="md">Sign up</Link>
+        <!-- <a href="/login">Log in</a> -->
+        <Link href="#" id="connect-wallet" size="md">Connect Wallet</Link>
       </div>
     </div>
   </header>
+  <script src="../../jsFile/connectWallet.js"></script>
 </Container>

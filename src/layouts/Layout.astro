@@ -3,7 +3,7 @@ import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
-import '@fontsource-variable/bricolage-grotesque';
+import "@fontsource-variable/bricolage-grotesque";
 // import CreateToken from "@pages/tokenForm.astro";
 export interface Props {
   title: string;
@@ -12,20 +12,31 @@ export interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
+  "/NofaceMint-screenshot.png",
+  Astro.site,
 ).toString();
 
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "TokenMaker"
-  : "TokenMaker - Create and Manage Your Tokens on Solana";
+  ? title + " | " + "NoFaceMint"
+  : "Create & Manage Tokens on Solana | NoFaceMint"; // Shortened title
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z732KG1X6W"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-Z732KG1X6W");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -34,7 +45,7 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="TokenMaker is a platform for creating and managing custom tokens on the Solana blockchain."
+      description="NoFaceMint is a platform for creating, managing, and analyzing custom tokens on the Solana blockchain. Efficiently handle your tokens with our advanced tools."
       canonical={canonicalURL}
       twitter={{
         creator: "@yourtwitterhandle",
@@ -45,20 +56,18 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `TokenMaker - Create and Manage Your Tokens on Solana`,
+          title: `Create & Manage Tokens on Solana | NoFaceMint`, // Shortened title
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "TokenMaker Homepage Screenshot",
+          alt: "NoFaceMint Homepage Screenshot",
         },
       }}
     />
   </head>
   <body>
-
     <!-- <CreateToken /> -->
     <Navbar />
-    
 
     <slot />
     <Footer />
