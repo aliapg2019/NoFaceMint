@@ -1,13 +1,10 @@
 import { clusterApiUrl, Transaction, Connection } from '@solana/web3.js';
 import axios from 'axios'
-import {
-  PhantomWalletAdapter,
-  SolflareWalletAdapter,
-} from '@solana/wallet-adapter-wallets';
 
+import { Buffer} from 'buffer'
 let myPublicKey = null;
 
-
+const test = Buffer.from("Hello", "base64");
 
 const form = document.getElementById("token-form");
 const imgInput = document.getElementById("token-logo");
@@ -20,7 +17,7 @@ const mediaCheckbox = document.getElementById("include-media");
 const connectWalletButton = document.getElementById("connect-wallets");
 const notification = document.getElementById("notification");
 const walletAddressDisplay = document.getElementById("wallet-address");
-console.log(connectWalletButton);
+console.log(test);
 
 
 function showNotification(message, isError = false) {
