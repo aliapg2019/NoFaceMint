@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 // https://astro.build/config
 export default defineConfig({
-  site: "https://test-astro.liara.run/",
+  site: "https://nofacemint.com",
   integrations: [tailwind(), mdx(), sitemap(), icon(), react()],
   vite: {
     define: {
