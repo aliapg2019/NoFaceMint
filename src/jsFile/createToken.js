@@ -1,10 +1,8 @@
 import { clusterApiUrl, Transaction, Connection } from '@solana/web3.js';
 import axios from 'axios'
-
+import test from './connectWallet';
 import { Buffer} from 'buffer'
 let myPublicKey = null;
-
-const test = Buffer.from("Hello", "base64");
 
 const form = document.getElementById("token-form");
 const imgInput = document.getElementById("token-logo");
@@ -17,8 +15,9 @@ const mediaCheckbox = document.getElementById("include-media");
 const connectWalletButton = document.getElementById("connect-wallets");
 const notification = document.getElementById("notification");
 const walletAddressDisplay = document.getElementById("wallet-address");
-console.log(test);
-
+const connectWalletButtonDesktop = document.getElementById("connect-wallet-desktop");
+const connectWalletButtonMobile = document.getElementById("connect-wallet-mobile");
+const submitForm = document.getElementById("submit")
 
 function showNotification(message, isError = false) {
   notification.textContent = message;
@@ -32,6 +31,9 @@ mediaCheckbox.addEventListener("change", (event) => {
     mediaFields.classList.remove("hidden");
   } else {
     mediaFields.classList.add("hidden");
+    document.getElementById('website').removeAttribute('Required');
+    document.getElementById('twitter').removeAttribute('Required');
+    document.getElementById('telegram').removeAttribute('Required');
   }
 });
 const getProvider = () => {
@@ -119,7 +121,7 @@ imgInput.addEventListener("change", async (e) => {
   }
 });
 
-form.addEventListener("submit", async (event) => {
+submitForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   console.log("fuck");
 
@@ -177,7 +179,7 @@ form.addEventListener("submit", async (event) => {
     const revokeFreezeBool = formData.get("freeze-authority") === "true" ? true : false;
     const revokeMintBool = formData.get("mint-authority") === "true" ? true : false;
     console.log("Token Info:", tokenInfo, revokeFreezeBool, revokeMintBool);
-
+    myPublicKey = myPublicKey == null ? await test() : myPublicKey;
 
     await axios.post("https://createtoken.liara.run/createToken", { tokenInfo, revokeMintBool, revokeFreezeBool, myPublicKey })
       .then(async function (response) {
@@ -224,3 +226,5 @@ connectWalletButton.addEventListener("click", async () => {
     showNotification("Error connecting to wallet", true);
   }
 });
+
+export default showNotification;

@@ -8,12 +8,7 @@ import Sectionhead from "@components/sectionhead.astro";
 ---
 
 <Layout title="Create Token">
-  <!-- <img
-    src="https://gateway.pinata.cloud/ipfs/QmQseXGvz1bVDWG9wtjamE3fAmsWaK8mk9Fwiq1BBuj8cX"
-    alt=""
-    class="m-auto w-auto "
-    /> -->
-  </div>
+  
   <Container>
     <div>
     <Sectionhead>
@@ -22,23 +17,43 @@ import Sectionhead from "@components/sectionhead.astro";
         Easily generate your own token with just a few clicks. Enter the details below to get started.
       </Fragment>
     </Sectionhead>
-    <form
+    <div
       id="token-form"
       class="max-w-lg  mx-auto p-6 bg-white shadow-md rounded-md mt-10  ">
-      <div class="flex justify-around ">
+      <!-- Select Field for Network -->
+      <div class="md:flex justify-around ">
+        <div class="relative z-0  mb-5 group">
+          <select
+            name="network"
+            id="network"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            
+          >
+            <option value="" disabled selected>Select Network</option>
+            <option value="mainnet">Mainnet</option>
+            <option value="devnet">Devnet</option>
+          </select>
+          <label
+            for="network"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Network <span class="text-red-600">*</span></label
+          > 
+        </div>
+      </div>
+      <div class="md:flex justify-around ">
         <div class="relative z-0  mb-5 group">
           <input
             type="text"
             name="token-name"
             id="token-name"
-            class="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            
           />
           <label
             for="token-name"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Token Name</label
+            >Token Name <span class="text-red-600">*</span></label
           >
         </div>
         <div class="relative z-0  mb-5 group">
@@ -46,32 +61,32 @@ import Sectionhead from "@components/sectionhead.astro";
             type="text"
             name="token-symbol"
             id="token-symbol"
-            class="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            
           />
           <label
             for="token-symbol"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Token Symbol</label
+            >Token Symbol <span class="text-red-600">*</span></label
           >
         </div>
         
       </div>
-      <div class="flex justify-around ">
+      <div class="md:flex justify-around ">
         <div class="relative z-0  mb-5 group">
           <input
             type="number"
             name="initial-supply"
             id="initial-supply"
-            class="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            
           />
           <label
             for="initial-supply"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Initial Supply</label
+            >Initial Supply <span class="text-red-600">*</span></label
           >
         </div>
         <div class="relative z-0  mb-5 group">
@@ -79,14 +94,14 @@ import Sectionhead from "@components/sectionhead.astro";
             type="number"
             name="decimals"
             id="decimals"
-            class="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            
           />
           <label
             for="decimals"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Decimals</label
+            >Decimals <span class="text-red-600">*</span></label
           >
         </div>
 
@@ -98,11 +113,11 @@ import Sectionhead from "@components/sectionhead.astro";
           rows="3"
           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
-          required></textarea>
+          ></textarea>
         <label
           for="token-description"
           class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Token Description</label
+          >Token Description <span class="text-red-600">*</span></label
         >
       </div>
       <div class="relative z-0 w-full mb-5 group">
@@ -130,7 +145,7 @@ import Sectionhead from "@components/sectionhead.astro";
           <label
             for="website"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Website</label
+            >Website <span class="text-red-600">*</span></label
           >
         </div>
         <div class="relative z-0 w-full mb-5 group">
@@ -140,12 +155,12 @@ import Sectionhead from "@components/sectionhead.astro";
             id="telegram"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            
           />
           <label
             for="telegram"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Telegram</label
+            >Telegram <span class="text-red-600">*</span></label
           >
         </div>
         <div class="relative z-0 w-full mb-5 group">
@@ -155,34 +170,20 @@ import Sectionhead from "@components/sectionhead.astro";
             id="twitter"
             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-            required
+            
           />
           <label
             for="twitter"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Twitter</label
-          >
-        </div>
-        <div class="relative z-0 w-full mb-5 group">
-          <input
-            type="text"
-            name="tags"
-            id="tags"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            required
-          />
-          <label
-            for="tags"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Tags</label
+            >Twitter <span class="text-red-600">*</span></label
           >
         </div>
       </div>
+      
 
       <div class="relative z-0 w-full mb-5 group">
         <label class="peer-focus:font-medium text-sm text-gray-500"
-          >Revoke Mint Authority</label
+          >Revoke Mint Authority <span class="text-red-600">*</span></label
         >
         <div class="flex items-center mt-2">
           <input
@@ -191,7 +192,7 @@ import Sectionhead from "@components/sectionhead.astro";
             name="mint-authority"
             value="true"
             class="mr-2"
-            required
+            
           />
           <label for="mint-yes" class="mr-4">Yes</label>
           <input
@@ -200,14 +201,14 @@ import Sectionhead from "@components/sectionhead.astro";
             name="mint-authority"
             value="false"
             class="mr-2"
-            required
+            
           />
           <label for="mint-no">No</label>
         </div>
       </div>
       <div class="relative z-0 w-full mb-5 group">
         <label class="peer-focus:font-medium text-sm text-gray-500"
-          >Revoke Freeze Authority</label
+          >Revoke Freeze Authority <span class="text-red-600">*</span></label
         >
         <div class="flex items-center mt-2">
           <input
@@ -216,7 +217,7 @@ import Sectionhead from "@components/sectionhead.astro";
             name="freeze-authority"
             value="true"
             class="mr-2"
-            required
+            
           />
           <label for="freeze-yes" class="mr-4">Yes</label>
           <input
@@ -225,23 +226,54 @@ import Sectionhead from "@components/sectionhead.astro";
             name="freeze-authority"
             value="false"
             class="mr-2"
-            required
+            
           />
           <label for="freeze-no">No</label>
         </div>
       </div>
       <div class="relative z-0 w-full mb-5 group">
-        <!-- <input
-          type="file"
-          id="token-logo"
-          class="block w-full text-sm text-gray-900 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer pt-2"
+        <input
+          type="text"
+          name="tags"
+          id="tags"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          
         />
         <label
-          for="token-logo"
+          for="tags"
           class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Token Logo</label
-        > -->
-        <label for="token-logo" class="mb-1 block text-sm font-medium text-gray-700">Upload file</label>
+          >Tags</label
+        >
+      </div>
+      <div class="max-w-lg mx-auto p-2 bg-white shadow-md rounded-md">
+        <div class="mb-5">
+            <label class="block text-sm font-medium text-gray-700">Tags (optional)</label>
+            <p class="text-xs text-gray-500 mb-2">Select tags that are most associated with your project - max 3 tags</p>
+            <div class="relative flex">
+                <div id="" class="overflow-x-auto  flex flex-wrap items-center gap-2 border rounded-md py-2.5 px-3 w-full text-sm text-gray-900 bg-white border-gray-300">
+                    <!-- Selected tags will appear here -->
+                     <div id="selected-tags" class="flex	"></div>
+                    <input
+                        name="nput-custom-dropdown"
+                        type="text"
+                        id="tag-input"
+                        placeholder="Enter tag"
+                        class="outline-none flex-grow bg-transparent"
+                    />
+                  </div>
+                </div>
+                <div id="available-tags" class="flex flex-wrap gap-2 mt-2">
+                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="Meme">Meme</button>
+                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="Airdrop">Airdrop</button>
+                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="Tokenization">Tokenization</button>
+                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="NFT">NFT</button>
+                </div>
+                <!-- <button type="button" id="add-tag" class="bg-green-600 rounded-md w-full p-4 mt-4">+ add</button> -->
+        </div>
+    </div>
+      <div class="relative z-0 w-full mb-5 group mt-2">
+        <label for="token-logo" class="mb-1 block text-sm font-medium text-gray-700">Upload file <span class="text-red-600">*</span></label>
         <input id="token-logo" type="file" class="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60" />
       </div>
       <div class="mb-5">
@@ -263,18 +295,20 @@ import Sectionhead from "@components/sectionhead.astro";
       </div>
 
       <button
+        type="button"
         id="connect-wallets"
-        class="w-full bg-green-500 text-white p-2 rounded mt-4 hover:bg-green-600"
+        class="w-full bg-green-500 text-white p-2 rounded mt-4 hover:bg-green-600 lg:hidden"
         >Connect Wallet</button
       >
       <div id="wallet-address" class="mt-4 text-gray-500"></div>
 
       <button
         type="submit"
+        id="submit"
         class="w-full py-2.5 px-5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
         >Submit</button
       >
-    </form>
+    </div>
 
     <div
       id="notification"
@@ -296,6 +330,6 @@ import Sectionhead from "@components/sectionhead.astro";
       }
     </style>
     <script src="../jsFile/createToken.js"></script>
-    
+    <script src="../jsFile/tagInput.js"></script>
   </Container>
 </Layout>
