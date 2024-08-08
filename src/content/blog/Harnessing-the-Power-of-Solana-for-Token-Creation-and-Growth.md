@@ -4,7 +4,7 @@ title: "Harnessing the Power of Solana for Token Creation and Growth"
 snippet: "Explore how Solana's high-performance blockchain enhances token creation, offering scalability and efficiency. Learn about the benefits of Solana's network for launching tokens, driving innovation, and expanding business opportunities."
 
 image: {
-    src: "https://images.unsplash.com/photo-1574158622682-7015d7f60e9f?fit=crop&w=430&h=240",
+    src: "https://gateway.pinata.cloud/ipfs/QmSwPwJjjqWBs4hLzkanq9gBFk4S5ozCKJNJkQsKBzvnA3",
     alt: "Solana blockchain"
 }
 publishDate: "2024-07-19 09:00"

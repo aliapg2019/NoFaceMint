@@ -4,332 +4,432 @@ import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-
+import Image from "astro/components/Image.astro";
+import solicon from "@assets/iconSol.svg";
 ---
 
 <Layout title="Create Token">
-  
   <Container>
     <div>
-    <Sectionhead>
-      <Fragment slot="title">Create Your Custom Token</Fragment>
-      <Fragment slot="desc">
-        Easily generate your own token with just a few clicks. Enter the details below to get started.
-      </Fragment>
-    </Sectionhead>
-    <div
-      id="token-form"
-      class="max-w-lg  mx-auto p-6 bg-white shadow-md rounded-md mt-10  ">
-      <!-- Select Field for Network -->
-      <div class="md:flex justify-around ">
-        <div class="relative z-0  mb-5 group">
-          <select
-            name="network"
-            id="network"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            
-          >
-            <option value="" disabled selected>Select Network</option>
-            <option value="mainnet">Mainnet</option>
-            <option value="devnet">Devnet</option>
-          </select>
-          <label
-            for="network"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Network <span class="text-red-600">*</span></label
-          > 
+      <Sectionhead>
+        <Fragment slot="title">Create Your Custom Token</Fragment>
+        <Fragment slot="desc">
+          Easily generate your own token with just a few clicks. Enter the
+          details below to get started.
+        </Fragment>
+      </Sectionhead>
+      <form
+        id="token-form"
+        class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md mt-10">
+        <!-- Select Field for Network -->
+        <div class="md:flex justify-around">
+          <div class="relative z-0 mb-5 group">
+            <select
+              name="network"
+              id="network"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+              <option value="" disabled selected>Select Network</option>
+              <option value="mainnet">Mainnet</option>
+              <option value="devnet">Devnet</option>
+            </select>
+            <label
+              for="network"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Network <span class="text-red-600">*</span></label
+            >
+          </div>
         </div>
-      </div>
-      <div class="md:flex justify-around ">
-        <div class="relative z-0  mb-5 group">
-          <input
-            type="text"
-            name="token-name"
-            id="token-name"
-            class="block py-2.5 px-0 w-full  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            
-          />
+        <div class="md:flex justify-around">
+          <div class="relative z-0 mb-5 group">
+            <input
+              type="text"
+              name="token-name"
+              id="token-name"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="token-name"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Token Name <span class="text-red-600">*</span></label
+            >
+          </div>
+          <div class="relative z-0 mb-5 group">
+            <input
+              type="text"
+              name="token-symbol"
+              id="token-symbol"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="token-symbol"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Token Symbol <span class="text-red-600">*</span></label
+            >
+          </div>
+        </div>
+        <div class="md:flex justify-around">
+          <div class="relative z-0 mb-5 group">
+            <input
+              type="number"
+              name="initial-supply"
+              id="initial-supply"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="initial-supply"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Initial Supply <span class="text-red-600">*</span></label
+            >
+          </div>
+          <div class="relative z-0 mb-5 group">
+            <input
+              type="number"
+              name="decimals"
+              id="decimals"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="decimals"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Decimals <span class="text-red-600">*</span></label
+            >
+          </div>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <textarea
+            name="token-description"
+            id="token-description"
+            rows="3"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "></textarea>
           <label
-            for="token-name"
+            for="token-description"
             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Token Name <span class="text-red-600">*</span></label
+            >Token Description <span class="text-red-600">*</span></label
           >
         </div>
-        <div class="relative z-0  mb-5 group">
+        <div class="relative z-0 w-full mb-5 group">
           <input
-            type="text"
-            name="token-symbol"
-            id="token-symbol"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            
+            type="checkbox"
+            name="include-media"
+            id="include-media"
+            class="mr-2"
           />
-          <label
-            for="token-symbol"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Token Symbol <span class="text-red-600">*</span></label
+          <label for="include-media" class="peer-focus:font-medium text-sm"
+            >Include Media</label
           >
         </div>
-        
-      </div>
-      <div class="md:flex justify-around ">
-        <div class="relative z-0  mb-5 group">
-          <input
-            type="number"
-            name="initial-supply"
-            id="initial-supply"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            
-          />
-          <label
-            for="initial-supply"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Initial Supply <span class="text-red-600">*</span></label
-          >
-        </div>
-        <div class="relative z-0  mb-5 group">
-          <input
-            type="number"
-            name="decimals"
-            id="decimals"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            
-          />
-          <label
-            for="decimals"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Decimals <span class="text-red-600">*</span></label
-          >
+        <div id="media-fields" class="hidden">
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="url"
+              name="website"
+              id="website"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="website"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Website <span class="text-red-600">*</span></label
+            >
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="url"
+              name="telegram"
+              id="telegram"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="telegram"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Telegram <span class="text-red-600">*</span></label
+            >
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="url"
+              name="twitter"
+              id="twitter"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="twitter"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Twitter <span class="text-red-600">*</span></label
+            >
+          </div>
         </div>
 
-      </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <textarea
-          name="token-description"
-          id="token-description"
-          rows="3"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-          placeholder=" "
-          ></textarea>
-        <label
-          for="token-description"
-          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Token Description <span class="text-red-600">*</span></label
-        >
-      </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <input
-          type="checkbox"
-          name="include-media"
-          id="include-media"
-          class="mr-2"
-        />
-        <label
-          for="include-media"
-          class="peer-focus:font-medium text-sm text-gray-500"
-          >Include Media</label
-        >
-      </div>
-      <div id="media-fields" class="hidden">
-        <div class="relative z-0 w-full mb-5 group">
-          <input
-            type="url"
-            name="website"
-            id="website"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-          />
-          <label
-            for="website"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Website <span class="text-red-600">*</span></label
-          >
-        </div>
-        <div class="relative z-0 w-full mb-5 group">
-          <input
-            type="url"
-            name="telegram"
-            id="telegram"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            
-          />
-          <label
-            for="telegram"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Telegram <span class="text-red-600">*</span></label
-          >
-        </div>
-        <div class="relative z-0 w-full mb-5 group">
-          <input
-            type="url"
-            name="twitter"
-            id="twitter"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            
-          />
-          <label
-            for="twitter"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >Twitter <span class="text-red-600">*</span></label
-          >
-        </div>
-      </div>
-      
-
-      <div class="relative z-0 w-full mb-5 group">
-        <label class="peer-focus:font-medium text-sm text-gray-500"
-          >Revoke Mint Authority <span class="text-red-600">*</span></label
-        >
-        <div class="flex items-center mt-2">
-          <input
-            type="radio"
-            id="mint-yes"
-            name="mint-authority"
-            value="true"
-            class="mr-2"
-            
-          />
-          <label for="mint-yes" class="mr-4">Yes</label>
-          <input
-            type="radio"
-            id="mint-no"
-            name="mint-authority"
-            value="false"
-            class="mr-2"
-            
-          />
-          <label for="mint-no">No</label>
-        </div>
-      </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <label class="peer-focus:font-medium text-sm text-gray-500"
-          >Revoke Freeze Authority <span class="text-red-600">*</span></label
-        >
-        <div class="flex items-center mt-2">
-          <input
-            type="radio"
-            id="freeze-yes"
-            name="freeze-authority"
-            value="true"
-            class="mr-2"
-            
-          />
-          <label for="freeze-yes" class="mr-4">Yes</label>
-          <input
-            type="radio"
-            id="freeze-no"
-            name="freeze-authority"
-            value="false"
-            class="mr-2"
-            
-          />
-          <label for="freeze-no">No</label>
-        </div>
-      </div>
-      <div class="relative z-0 w-full mb-5 group">
-        <input
-          type="text"
-          name="tags"
-          id="tags"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-          placeholder=" "
-          
-        />
-        <label
-          for="tags"
-          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Tags</label
-        >
-      </div>
-      <div class="max-w-lg mx-auto p-2 bg-white shadow-md rounded-md">
-        <div class="mb-5">
-            <label class="block text-sm font-medium text-gray-700">Tags (optional)</label>
-            <p class="text-xs text-gray-500 mb-2">Select tags that are most associated with your project - max 3 tags</p>
+        <div class="max-w-lg mx-auto p-2 bg-white shadow-md rounded-md">
+          <div class="mb-5">
+            <label class="block text-sm font-medium text-gray-700"
+              >Tags (optional)</label
+            >
+            <p class="text-xs text-gray-500 mb-2">
+              Select tags that are most associated with your project - max 3
+              tags
+            </p>
             <div class="relative flex">
-                <div id="" class="overflow-x-auto  flex flex-wrap items-center gap-2 border rounded-md py-2.5 px-3 w-full text-sm text-gray-900 bg-white border-gray-300">
-                    <!-- Selected tags will appear here -->
-                     <div id="selected-tags" class="flex	"></div>
-                    <input
-                        name="nput-custom-dropdown"
-                        type="text"
-                        id="tag-input"
-                        placeholder="Enter tag"
-                        class="outline-none flex-grow bg-transparent"
-                    />
-                  </div>
-                </div>
-                <div id="available-tags" class="flex flex-wrap gap-2 mt-2">
-                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="Meme">Meme</button>
-                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="Airdrop">Airdrop</button>
-                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="Tokenization">Tokenization</button>
-                  <button type="button" class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer" data-tag="NFT">NFT</button>
-                </div>
-                <!-- <button type="button" id="add-tag" class="bg-green-600 rounded-md w-full p-4 mt-4">+ add</button> -->
+              <div
+                id=""
+                class="overflow-x-auto flex flex-wrap items-center gap-2 border rounded-md py-2.5 px-3 w-full text-sm text-gray-900 bg-white border-gray-300">
+                <!-- Selected tags will appear here -->
+                <div id="selected-tags" class="flex"></div>
+                <input
+                  name="nput-custom-dropdown"
+                  type="text"
+                  id="tag-input"
+                  placeholder="Enter tag"
+                  class="outline-none flex-grow bg-transparent"
+                />
+              </div>
+            </div>
+            <div id="available-tags" class="flex flex-wrap gap-2 mt-2">
+              <button
+                type="button"
+                class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer"
+                data-tag="Meme">Meme</button
+              >
+              <button
+                type="button"
+                class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer"
+                data-tag="Airdrop">Airdrop</button
+              >
+              <button
+                type="button"
+                class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer"
+                data-tag="Tokenization">Tokenization</button
+              >
+              <button
+                type="button"
+                class="tag bg-gray-200 px-3 py-1 rounded-full text-sm cursor-pointer"
+                data-tag="NFT">NFT</button
+              >
+            </div>
+            <!-- <button type="button" id="add-tag" class="bg-green-600 rounded-md w-full p-4 mt-4">+ add</button> -->
+          </div>
         </div>
-    </div>
-      <div class="relative z-0 w-full mb-5 group mt-2">
-        <label for="token-logo" class="mb-1 block text-sm font-medium text-gray-700">Upload file <span class="text-red-600">*</span></label>
-        <input id="token-logo" type="file" class="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60" />
-      </div>
-      <div class="mb-5">
-        <div id="img-url"></div>
-        <img
-          id="img-display"
-          src=""
-          alt="Token Logo Preview"
-          style="display: none;"
-          
-          class="border-4 border-black rounded-lg w-64 m-auto"
-        />
-        <div id="error-handling" class="text-red-600"></div>
-      </div>
-      <div id="loading-spinner" class="hidden flex justify-center items-center">
+        <div class="relative z-0 w-full mb-5 group mt-2">
+          <label
+            for="token-logo"
+            class="mb-1 block text-sm font-medium text-gray-700"
+            >Upload file <span class="text-red-600">*</span></label
+          >
+          <input
+            id="token-logo"
+            type="file"
+            class="mt-2 block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-teal-500 file:py-2 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-teal-700 focus:outline-none disabled:pointer-events-none disabled:opacity-60"
+          />
+        </div>
+        <div class="mb-5">
+          <div id="img-url" class="hidden"></div>
+          <img
+            id="img-display"
+            src=""
+            alt="Token Logo Preview"
+            style="display: none;"
+            class="border-4 border-black rounded-lg w-64 m-auto"
+          />
+          <div id="error-handling" class="text-red-600"></div>
+        </div>
+
+        <div class="relative z-0 w-full mb-5 group flex">
+          <input
+            type="checkbox"
+            class="peer sr-only opacity-0"
+            id="toggle-revokMint"
+          />
+          <label
+            for="toggle-revokMint"
+            class="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-green-500 peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-green-500"
+            for="toggle-revokMint ">
+            <span class="sr-only">Enable</span>
+          </label>
+          <span class="ml-2 flex">
+            Revoke Mint Authority (0.05
+            <div class="w-5 my-auto ml-1">
+              <Image src={solicon} alt="$" />
+            </div>
+            SOL)
+          </span>
+        </div>
+        <div class="relative z-0 w-full mb-5 group flex">
+          <input
+            type="checkbox"
+            class="peer sr-only opacity-0"
+            id="toggle-revokFreeze"
+          />
+          <label
+            for="toggle-revokFreeze"
+            class="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-green-500 peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-green-500"
+            for="toggle-revokFreeze ">
+            <span class="sr-only">Enable</span>
+          </label>
+          <span class="ml-2 flex">
+            Revoke Freeze Authority (0.05
+            <div class="w-5 my-auto ml-1">
+              <Image src={solicon} alt="$" />
+            </div>
+            SOL)
+          </span>
+        </div>
+        <div class="relative z-0 w-full mb-5 group flex">
+          <input
+            type="checkbox"
+            class="peer sr-only opacity-0"
+            id="toggle-custom-creator-info"
+          />
+          <label
+            for="toggle-custom-creator-info"
+            class="relative flex h-6 w-11 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 outline-gray-400 transition-colors before:h-5 before:w-5 before:rounded-full before:bg-white before:shadow before:transition-transform before:duration-300 peer-checked:bg-green-500 peer-checked:before:translate-x-full peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400 peer-checked:peer-focus-visible:outline-green-500"
+            for="toggle-custom-creator-info ">
+            <span class="sr-only">Enable</span>
+          </label>
+          <span class="ml-2 flex">
+            Custom Creator Info (0.05
+            <div class="w-5 my-auto ml-1">
+              <Image src={solicon} alt="$" />
+            </div>
+            SOL)
+          </span>
+        </div>
+        <div id="creator-fields" class="hidden">
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="url"
+              name="creatorWebsite"
+              id="creatorWebsite"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="creatorWebsite"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Creator Website <span class="text-red-600">*</span></label
+            >
+          </div>
+          <div class="relative z-0 w-full mb-5 group">
+            <input
+              type="text"
+              name="Creator"
+              id="creatorName"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              for="creatorName"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Creator <span class="text-red-600">*</span></label
+            >
+          </div>
+        </div>
+
         <div
-          class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16">
+          id="loading-spinner"
+          class="hidden flex justify-center items-center">
+          <div
+            class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16">
+          </div>
         </div>
+
+        <button
+          type="button"
+          id="connect-wallets"
+          class="w-full bg-green-500 text-white p-2 rounded mt-4 hover:bg-green-600 lg:hidden"
+          >Connect Wallet</button
+        >
+        <div id="wallet-address" class="mt-4 text-gray-500"></div>
+
+        <button
+          type="submit"
+          id="submit"
+          class="w-full mt-2 py-2.5 px-5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
+          >Submit</button
+        >
+        <div
+          class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+          <div class="flex items-center justify-center mt-1 space-x-2">
+            <span class="line-through text-red-500 text-lg font-semibold"
+              >0.5 SOL</span
+            >
+            <span class="text-lg text-green-600 font-semibold">0.05 SOL</span>
+            <span
+              class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded"
+              >90% OFF</span
+            >
+          </div>
+          <div class="mt-4">
+            <span
+              class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded"
+              >Limited Time Offer</span
+            >
+          </div>
+          <div class="mt-2 text-xl font-bold text-gray-800">
+            <span id="timer"></span>
+          </div>
+        </div>
+      </form>
+
+      <div
+        id="notification"
+        class="fixed top-4 right-4 p-4 rounded-md shadow-lg text-white hidden">
       </div>
 
-      <button
-        type="button"
-        id="connect-wallets"
-        class="w-full bg-green-500 text-white p-2 rounded mt-4 hover:bg-green-600 lg:hidden"
-        >Connect Wallet</button
-      >
-      <div id="wallet-address" class="mt-4 text-gray-500"></div>
-
-      <button
-        type="submit"
-        id="submit"
-        class="w-full py-2.5 px-5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
-        >Submit</button
-      >
-    </div>
-
-    <div
-      id="notification"
-      class="fixed top-4 right-4 p-4 rounded-md shadow-lg text-white hidden">
-    </div>
-
-    <style>
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
+      <style>
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
         }
-        100% {
-          transform: rotate(360deg);
+        .loader {
+          border-top-color: #3498db;
+          animation: spin 1s linear infinite;
         }
-      }
-      .loader {
-        border-top-color: #3498db;
-        animation: spin 1s linear infinite;
-      }
-    </style>
-    <script src="../jsFile/createToken.js"></script>
-    <script src="../jsFile/tagInput.js"></script>
+      </style>
+      <script>
+        // Set the date we're counting down to (one week from now)
+        var countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+          // Get today's date and time
+          var now = new Date().getTime();
+
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Output the result in an element with id="timer"
+          document.getElementById("timer").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+      </script>
+      <script src="../jsFile/createToken.js"></script>
+      <script src="../jsFile/tagInput.js"></script>
+    </div>
   </Container>
 </Layout>

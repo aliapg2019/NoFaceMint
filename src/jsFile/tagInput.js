@@ -1,10 +1,11 @@
 import showNotification from "./createToken";
+const selectedTags = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     const selectedTagsContainer = document.getElementById('selected-tags');
     const availableTagsContainer = document.getElementById('available-tags');
     let tagInput = document.getElementById('tag-input');
     const addTag = document.getElementById("add-tag")
-    const selectedTags = [];
 
     availableTagsContainer.addEventListener('click', (event) => {
         if (event.target.classList.contains('tag')) {
@@ -38,13 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectedTags.push(tag);
                 updateSelectedTags();
                 tagInput.value = '';
-                console.log("ok");
+
             }
-            console.log("test tag");
+            console.log("test tag", selectedTags);
         }
-        else {
-            showNotification("max 3 tags" , true)
-        }
+
     });
 
     function updateSelectedTags() {
@@ -62,10 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         if (selectedTags.length == 3) {
             tagInput.classList.add("hidden");
-            
-        }else{
+
+        } else {
             tagInput.classList.remove("hidden");
         }
     }
+
+    return selectedTags;
+
 });
 
+function getSelectedTags(){
+    return selectedTags;
+}
+
+export default getSelectedTags;

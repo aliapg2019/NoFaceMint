@@ -1,23 +1,71 @@
 import { clusterApiUrl, Transaction, Connection } from '@solana/web3.js';
 import axios from 'axios'
 import test from './connectWallet';
-import { Buffer} from 'buffer'
+import { Buffer } from 'buffer'
+import setSelectedTags from './tagInput'
+import getSelectedTags from './tagInput';
+function getElement(id) {
+  return document.getElementById(id)
+}
 let myPublicKey = null;
+let revokeMintBool , revokeFreezeBool;
+const form = getElement("token-form");
+const imgInput = getElement("token-logo");
+const imgUrl = getElement("img-url");
+const imgDisplay = getElement("img-display");
+const errorHandling = getElement("error-handling");
+const loadingSpinner = getElement("loading-spinner");
+const mediaFields = getElement("media-fields");
+const mediaCheckbox = getElement("include-media");
+const connectWalletButton = getElement("connect-wallets");
+const notification = getElement("notification");
+const walletAddressDisplay = getElement("wallet-address");
+const connectWalletButtonDesktop = getElement("connect-wallet-desktop");
+const connectWalletButtonMobile = getElement("connect-wallet-mobile");
+const submitForm = getElement("submit");
 
-const form = document.getElementById("token-form");
-const imgInput = document.getElementById("token-logo");
-const imgUrl = document.getElementById("img-url");
-const imgDisplay = document.getElementById("img-display");
-const errorHandling = document.getElementById("error-handling");
-const loadingSpinner = document.getElementById("loading-spinner");
-const mediaFields = document.getElementById("media-fields");
-const mediaCheckbox = document.getElementById("include-media");
-const connectWalletButton = document.getElementById("connect-wallets");
-const notification = document.getElementById("notification");
-const walletAddressDisplay = document.getElementById("wallet-address");
-const connectWalletButtonDesktop = document.getElementById("connect-wallet-desktop");
-const connectWalletButtonMobile = document.getElementById("connect-wallet-mobile");
-const submitForm = document.getElementById("submit")
+const nameInput = getElement("token-name");
+const symbolInput = getElement("token-symbol");
+const totalSupplyInput = getElement("initial-supply");
+const decimalsInput = getElement("decimals");
+const descriptionInput = getElement("token-description");
+const websiteInput = getElement("website");
+const twitterInput = getElement("twitter");
+const telegramInput = getElement("telegram");
+const revokeFreeze = getElement("toggle-revokFreeze");
+const revokeMint = getElement("toggle-revokMint");
+const selectNetwork = getElement("network");
+const creatorToggle = getElement('toggle-custom-creator-info');
+const creatorFields = getElement('creator-fields')
+creatorToggle.addEventListener('change', (event) => {
+  if (event.target.checked) {
+    creatorFields.classList.remove('hidden')
+    console.log(getSelectedTags());
+  } else {
+    creatorFields.classList.add('hidden');
+    console.log(revokeMintBool);
+  }
+});
+
+revokeMint.addEventListener('change', (event) => {
+  if (event.target.checked) {
+    revokeMintBool = event.target.checked;
+    console.log(getSelectedTags());
+  } else {
+    revokeMintBool = event.target.checked;
+    console.log(revokeMintBool);
+  }
+});
+
+revokeFreeze.addEventListener('change', (event) => {
+  if (event.target.checked) {
+    revokeFreezeBool = event.target.checked;
+    console.log(revokeFreezeBool);
+  } else {
+    revokeFreezeBool = event.target.checked;
+    console.log(revokeFreezeBool);
+  }
+})
 
 function showNotification(message, isError = false) {
   notification.textContent = message;
@@ -28,12 +76,14 @@ function showNotification(message, isError = false) {
 }
 mediaCheckbox.addEventListener("change", (event) => {
   if (event.target.checked) {
+
     mediaFields.classList.remove("hidden");
   } else {
     mediaFields.classList.add("hidden");
     document.getElementById('website').removeAttribute('Required');
     document.getElementById('twitter').removeAttribute('Required');
     document.getElementById('telegram').removeAttribute('Required');
+    // document.getElementById('website').
   }
 });
 const getProvider = () => {
@@ -121,40 +171,40 @@ imgInput.addEventListener("change", async (e) => {
   }
 });
 
-submitForm.addEventListener("submit", async (event) => {
+submitForm.addEventListener("click", async (event) => {
   event.preventDefault();
-  console.log("fuck");
-
-  const formData = new FormData(form);
-
+  console.log("test");
+  // const test = {name: "ali" , lastName :"apg"};
+  // const formData = new FormData(test);
+  // console.log(formData);
   const metaDataforToken = {
-    name: formData.get("token-name"),
-    symbol: formData.get("token-symbol"),
+    name: nameInput.value,
+    symbol: symbolInput.value,
     image: imgUrl.textContent,
-    description: formData.get('token-description'),
+    description: descriptionInput.value,
     extensions: {
-      website: formData.get("website"),
-      twitter: formData.get("twitter"),
-      telegram: formData.get("telegram"),
+      website: websiteInput.value,
+      twitter: twitterInput.value,
+      telegram: telegramInput.value,
     },
-    tags: formData.get("tags").split(','),
+    tags: getSelectedTags(),
     creator: {
-      name: "NoFaceMint",
-      site: "https://nofacemint.com/",
+      name: getElement('creatorName').value || "NoFaceMint",
+      site: getElement('creatorWebsite').value || "https://nofacemint.com/",
     }
   };
-
+  console.log(selectNetwork.value);
   let errors = {};
   let newTx;
   if (!metaDataforToken.name) errors.tokenName = "Token Name is required";
   if (!metaDataforToken.symbol) errors.tokenSymbol = "Token Symbol is required";
-  if (!formData.get("initial-supply")) errors.initialSupply = "Initial Supply is required";
-  if (Number(formData.get("initial-supply")) > 18000000000 || Number(formData.get("initial-supply")) <= 0) errors.initialSupply = "Initial Supply must be between 1 and 18000000000";
-  if (!formData.get("decimals")) errors.decimals = "Decimals is required";
-  if (Number(formData.get("decimals")) == 0 || Number(formData.get("decimals")) > 9) errors.decimals = "Decimals must be between 1 and 9";
+  if (!totalSupplyInput.value) errors.initialSupply = "Initial Supply is required";
+  if (Number(totalSupplyInput.value) > 18000000000 || Number(totalSupplyInput.value) <= 0) errors.initialSupply = "Initial Supply must be between 1 and 18000000000";
+  if (!decimalsInput.value) errors.decimals = "Decimals is required";
+  if (Number(decimalsInput.value) == 0 || Number(decimalsInput.value) > 9) errors.decimals = "Decimals must be between 1 and 9";
   if (!metaDataforToken.description) errors.tokenDescription = "Token Description is required";
-  if (!formData.get("mint-authority")) errors.mintAuthority = "Mint Authority is required";
-  if (!formData.get("freeze-authority")) errors.freezeAuthority = "Freeze Authority is required";
+  if (!revokeMint.value) errors.mintAuthority = "Mint Authority is required";
+  if (!revokeFreeze.value) errors.freezeAuthority = "Freeze Authority is required";
   if (!metaDataforToken.image) errors.tokenLogo = "Token Logo is required";
 
   if (Object.keys(errors).length > 0) {
@@ -170,14 +220,14 @@ submitForm.addEventListener("submit", async (event) => {
     console.log("Token Data IPFS URL:", ipfsUrl);
 
     const tokenInfo = {
-      amount: formData.get("initial-supply"),
-      decimals: formData.get("decimals"),
+      amount: totalSupplyInput.value,
+      decimals: decimalsInput.value,
       metadata: ipfsUrl,
-      symbol: formData.get("token-symbol"),
-      tokenName: formData.get("token-name"),
+      symbol: symbolInput.value,
+      tokenName: nameInput.value,
     };
-    const revokeFreezeBool = formData.get("freeze-authority") === "true" ? true : false;
-    const revokeMintBool = formData.get("mint-authority") === "true" ? true : false;
+    // const revokeFreezeBool = revokeFreeze.value === "true" ? true : false;
+    // const revokeMintBool = revokeMint.value === "true" ? true : false;
     console.log("Token Info:", tokenInfo, revokeFreezeBool, revokeMintBool);
     myPublicKey = myPublicKey == null ? await test() : myPublicKey;
 

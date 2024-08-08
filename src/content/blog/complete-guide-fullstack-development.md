@@ -4,7 +4,7 @@ title: "The Impact of Token Creation on Business Growth"
 snippet: "Discover how token creation can fuel business growth by providing new fundraising opportunities, enhancing liquidity, and boosting customer engagement. Understand the advantages of global investor reach, real-time market insights, and innovative loyalty programs."
 
 image: {
-    src: "https://images.unsplash.com/photo-1617269656184-0d9437f5cf6d?fit=crop&w=430&h=240",
+    src: "https://gateway.pinata.cloud/ipfs/QmTU41Hx5mUMjz94zvgwbrFMYRMoUPQNcdVte5Qy9MB3dp",
     alt: "Token creation"
 }
 publishDate: "2024-07-19 09:00"
