@@ -27,7 +27,7 @@ import solicon from "@assets/iconSol.svg";
             <select
               name="network"
               id="network"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
+              class="block mb-2 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer">
               <option value="" disabled selected>Select Network</option>
               <option value="mainnet">Mainnet</option>
               <option value="devnet">Devnet</option>
@@ -37,6 +37,8 @@ import solicon from "@assets/iconSol.svg";
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >Network <span class="text-red-600">*</span></label
             >
+            
+            <a id="airdrop" href="https://faucet.solana.com/" class="text-sm text-white bg-black rounded-md p-1 hidden">Get Airdrop SOL For Test</a>
           </div>
         </div>
         <div class="md:flex justify-around">
@@ -349,10 +351,10 @@ import solicon from "@assets/iconSol.svg";
         <div id="wallet-address" class="mt-4 text-gray-500"></div>
 
         <button
-          type="submit"
+          type="button"
           id="submit"
           class="w-full mt-2 py-2.5 px-5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300"
-          >Submit</button
+          >Create Token</button
         >
         <div
           class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
@@ -377,7 +379,85 @@ import solicon from "@assets/iconSol.svg";
           </div>
         </div>
       </form>
-
+      <Sectionhead>
+        <Fragment slot="title">How to Create Your Token</Fragment>
+        <Fragment slot="desc">
+          Follow these steps to create your custom token:
+        </Fragment>
+      </Sectionhead>
+      
+      <div class="list-decimal pl-5 text-gray-700 mt-4  leading-normal">
+        <li>Connect your wallet to be able to use the software.</li>
+        <li>Enter the name of your token (this is required).</li>
+        <li>Indicate the abbreviation of your SPL Token "Symbol" (max. 8 letters; this is required).</li>
+        <li>Select the number of decimals for your token (between 1 and 9; this is required).</li>
+        <li>Specify the initial supply of your token (must be between 1 and 18,000,000,000; this is required).</li>
+        <li>Upload your token image in PNG format (this is required).</li>
+        <li>Write a description for your Solana Token (this is required).</li>
+        <li>Optional: Add social links for your token: Website, Twitter (X), Telegram, and Discord.</li>
+        <li>Optional: Choose whether to make the token immutable, and whether to revoke freeze authority and mint authority.</li>
+        <li>Click on "Create Token" and accept the transaction to complete the process.</li>
+      </div>
+      
+        <Sectionhead>
+          <Fragment slot="title">Frequently Asked Questions (FAQ)</Fragment>
+        </Sectionhead>
+        
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is a token?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              A token is a digital asset that represents a certain value, utility, or other attributes. Tokens can be used for various purposes in blockchain networks, including transactions, rewards, governance, and more.
+            </p>
+          </details>
+        </div>
+        
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is the initial supply?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              The initial supply is the total number of tokens that will be created when the token is generated. This amount can be distributed or reserved according to your project's needs.
+            </p>
+          </details>
+        </div>
+        
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What are decimals in a token?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              Decimals determine the smallest unit of the token that can be transacted. For example, if a token has 6 decimals, the smallest unit that can be transacted is 0.000001 of that token.
+            </p>
+          </details>
+        </div>
+        
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How can I revoke minting authority?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              Revoking minting authority means that no more tokens can be created after the initial supply. This is a security feature that ensures the total supply remains fixed.
+            </p>
+          </details>
+        </div>
+        
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How do I include media links in my token information?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              You can include media links such as your project's website, Telegram, or Twitter handles by enabling the "Include Media" option in the form. This adds fields where you can enter the relevant URLs.
+            </p>
+          </details>
+        </div>
+      
       <div
         id="notification"
         class="fixed top-4 right-4 p-4 rounded-md shadow-lg text-white hidden">

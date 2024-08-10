@@ -3,7 +3,7 @@ draft: false
 title: "Creating Tokens on Solana: A Comprehensive Guide"
 snippet: "Explore the process of creating tokens on the Solana blockchain, including memecoins and SPL tokens, to harness the power of one of the fastest-growing decentralized networks."
 image: {
-    src: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?&fit=crop&w=430&h=240",
+    src: "https://gateway.pinata.cloud/ipfs/QmbkPppjW9dvA9q26ZacS3Qxtcnv6Mae9eommbQxsQ8wb3",
     alt: "Creating Tokens on Solana"
 }
 publishDate: "2024-08-04 16:39"

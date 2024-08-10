@@ -7,8 +7,12 @@ import getSelectedTags from './tagInput';
 function getElement(id) {
   return document.getElementById(id)
 }
+
 let myPublicKey = null;
 let revokeMintBool , revokeFreezeBool;
+const net = clusterApiUrl('devnet')
+console.log(net);
+
 const form = getElement("token-form");
 const imgInput = getElement("token-logo");
 const imgUrl = getElement("img-url");
@@ -37,20 +41,32 @@ const revokeMint = getElement("toggle-revokMint");
 const selectNetwork = getElement("network");
 const creatorToggle = getElement('toggle-custom-creator-info');
 const creatorFields = getElement('creator-fields')
+const airdropSol = getElement('airdrop')
+
+selectNetwork.addEventListener('change', ()=>{
+  if (selectNetwork.value === "devnet") {
+    airdropSol.classList.remove('hidden')
+  } else {
+    airdropSol.classList.add('hidden');
+  }
+
+})
+
 creatorToggle.addEventListener('change', (event) => {
   if (event.target.checked) {
     creatorFields.classList.remove('hidden')
-    console.log(getSelectedTags());
+    
   } else {
     creatorFields.classList.add('hidden');
-    console.log(revokeMintBool);
+    
   }
 });
+
 
 revokeMint.addEventListener('change', (event) => {
   if (event.target.checked) {
     revokeMintBool = event.target.checked;
-    console.log(getSelectedTags());
+    console.log(revokeMintBool);
   } else {
     revokeMintBool = event.target.checked;
     console.log(revokeMintBool);
@@ -171,8 +187,8 @@ imgInput.addEventListener("change", async (e) => {
   }
 });
 
-submitForm.addEventListener("click", async (event) => {
-  event.preventDefault();
+submitForm.addEventListener("click", async () => {
+  // event.preventDefault();
   console.log("test");
   // const test = {name: "ali" , lastName :"apg"};
   // const formData = new FormData(test);
@@ -206,6 +222,7 @@ submitForm.addEventListener("click", async (event) => {
   if (!revokeMint.value) errors.mintAuthority = "Mint Authority is required";
   if (!revokeFreeze.value) errors.freezeAuthority = "Freeze Authority is required";
   if (!metaDataforToken.image) errors.tokenLogo = "Token Logo is required";
+  if (!selectNetwork.value) errors.network = "Select Network";
 
   if (Object.keys(errors).length > 0) {
     console.error("Form validation errors:", errors);
@@ -226,16 +243,16 @@ submitForm.addEventListener("click", async (event) => {
       symbol: symbolInput.value,
       tokenName: nameInput.value,
     };
-    // const revokeFreezeBool = revokeFreeze.value === "true" ? true : false;
-    // const revokeMintBool = revokeMint.value === "true" ? true : false;
+    const network = selectNetwork.value;
     console.log("Token Info:", tokenInfo, revokeFreezeBool, revokeMintBool);
     myPublicKey = myPublicKey == null ? await test() : myPublicKey;
 
-    await axios.post("https://createtoken.liara.run/createToken", { tokenInfo, revokeMintBool, revokeFreezeBool, myPublicKey })
+    await axios.post("https://createtoken.liara.run/createToken", { tokenInfo, revokeMintBool, revokeFreezeBool, myPublicKey , network })
       .then(async function (response) {
         console.log(response);
         let provider = getProvider()
-        const network = "https://devnet.helius-rpc.com/?api-key=8a1383bc-5fba-4e84-8bde-894536d212c1";
+        const network = net
+        // "https://devnet.helius-rpc.com/?api-key=8a1383bc-5fba-4e84-8bde-894536d212c1";
         const connection = new Connection(network);
         newTx = response.data.serializedTransaction;
         const transaction = Transaction.from(Buffer.from(newTx, 'base64'));
