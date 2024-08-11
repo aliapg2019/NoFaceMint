@@ -477,37 +477,47 @@ import solicon from "@assets/iconSol.svg";
           animation: spin 1s linear infinite;
         }
       </style>
+      <div id="timer"></div>
+
       <script>
-        // Set the date we're counting down to (one week from now)
-        var countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
-
-        // Update the count down every 1 second
+        // ابتدا بررسی می‌کنیم که آیا تاریخ پایان تایمر در Local Storage ذخیره شده است یا نه
+        var countDownDate = localStorage.getItem('countDownDate');
+      
+        // اگر تاریخ ذخیره نشده بود، آن را تنظیم کرده و در Local Storage ذخیره می‌کنیم
+        if (!countDownDate) {
+          countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000; // یک هفته از زمان فعلی
+          localStorage.setItem('countDownDate', countDownDate);
+        } else {
+          countDownDate = parseInt(countDownDate, 10);
+        }
+      
+        // به روز رسانی تایمر هر یک ثانیه
         var x = setInterval(function () {
-          // Get today's date and time
+          // دریافت زمان فعلی
           var now = new Date().getTime();
-
-          // Find the distance between now and the count down date
+      
+          // محاسبه فاصله زمانی بین زمان فعلی و تاریخ پایان تایمر
           var distance = countDownDate - now;
-
-          // Time calculations for days, hours, minutes and seconds
+      
+          // محاسبه روزها، ساعت‌ها، دقیقه‌ها و ثانیه‌ها
           var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          var hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-          );
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          // Output the result in an element with id="timer"
+      
+          // نمایش نتیجه در عنصری با id="timer"
           document.getElementById("timer").innerHTML =
             days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-          // If the count down is finished, write some text
+      
+          // اگر تایمر تمام شد، متن "EXPIRED" را نمایش می‌دهیم
           if (distance < 0) {
             clearInterval(x);
             document.getElementById("timer").innerHTML = "EXPIRED";
+            localStorage.removeItem('countDownDate'); // حذف تاریخ پایان تایمر از Local Storage
           }
         }, 1000);
       </script>
+      
       <script src="../jsFile/createToken.js"></script>
       <script src="../jsFile/tagInput.js"></script>
     </div>

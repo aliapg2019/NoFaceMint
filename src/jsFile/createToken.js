@@ -10,7 +10,7 @@ function getElement(id) {
 
 let myPublicKey = null;
 let revokeMintBool , revokeFreezeBool;
-const net = clusterApiUrl('devnet')
+const net = clusterApiUrl('mainnet-beta')
 console.log(net);
 
 const form = getElement("token-form");
@@ -246,14 +246,23 @@ submitForm.addEventListener("click", async () => {
     const network = selectNetwork.value;
     console.log("Token Info:", tokenInfo, revokeFreezeBool, revokeMintBool);
     myPublicKey = myPublicKey == null ? await test() : myPublicKey;
-
+    console.log(myPublicKey);
+    
     await axios.post("https://createtoken.liara.run/createToken", { tokenInfo, revokeMintBool, revokeFreezeBool, myPublicKey , network })
       .then(async function (response) {
         console.log(response);
+
         let provider = getProvider()
-        const network = net
-        // "https://devnet.helius-rpc.com/?api-key=8a1383bc-5fba-4e84-8bde-894536d212c1";
-        const connection = new Connection(network);
+        let networkSet
+        //"https://devnet.helius-rpc.com/?api-key=8a1383bc-5fba-4e84-8bde-894536d212c1";
+        if (selectNetwork.value === "mainnet") {
+
+          networkSet = "https://mainnet.helius-rpc.com/?api-key=8a1383bc-5fba-4e84-8bde-894536d212c1";
+
+        } else {
+          networkSet = "https://devnet.helius-rpc.com/?api-key=8a1383bc-5fba-4e84-8bde-894536d212c1";
+        }
+        const connection = new Connection(networkSet);
         newTx = response.data.serializedTransaction;
         const transaction = Transaction.from(Buffer.from(newTx, 'base64'));
         console.log("newTx:", newTx);
