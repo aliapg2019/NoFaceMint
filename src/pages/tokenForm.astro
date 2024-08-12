@@ -37,8 +37,13 @@ import solicon from "@assets/iconSol.svg";
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-0 peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >Network <span class="text-red-600">*</span></label
             >
-            
-            <a id="airdrop" href="https://faucet.solana.com/" class="text-sm text-white bg-black rounded-md p-1 hidden">Get Airdrop SOL For Test</a>
+
+            <a
+              id="airdrop"
+              href="https://faucet.solana.com/"
+              class="text-sm text-white bg-black rounded-md p-1 hidden"
+              >Get Airdrop SOL For Test</a
+            >
           </div>
         </div>
         <div class="md:flex justify-around">
@@ -385,79 +390,299 @@ import solicon from "@assets/iconSol.svg";
           Follow these steps to create your custom token:
         </Fragment>
       </Sectionhead>
-      
-      <div class="list-decimal pl-5 text-gray-700 mt-4  leading-normal">
+
+      <div class="list-decimal pl-5 text-gray-700 mt-4 leading-normal">
         <li>Connect your wallet to be able to use the software.</li>
         <li>Enter the name of your token (this is required).</li>
-        <li>Indicate the abbreviation of your SPL Token "Symbol" (max. 8 letters; this is required).</li>
-        <li>Select the number of decimals for your token (between 1 and 9; this is required).</li>
-        <li>Specify the initial supply of your token (must be between 1 and 18,000,000,000; this is required).</li>
+        <li>
+          Indicate the abbreviation of your SPL Token "Symbol" (max. 8 letters;
+          this is required).
+        </li>
+        <li>
+          Select the number of decimals for your token (between 1 and 9; this is
+          required).
+        </li>
+        <li>
+          Specify the initial supply of your token (must be between 1 and
+          18,000,000,000; this is required).
+        </li>
         <li>Upload your token image in PNG format (this is required).</li>
         <li>Write a description for your Solana Token (this is required).</li>
-        <li>Optional: Add social links for your token: Website, Twitter (X), Telegram, and Discord.</li>
-        <li>Optional: Choose whether to make the token immutable, and whether to revoke freeze authority and mint authority.</li>
-        <li>Click on "Create Token" and accept the transaction to complete the process.</li>
+        <li>
+          Optional: Add social links for your token: Website, Twitter (X),
+          Telegram, and Discord.
+        </li>
+        <li>
+          Optional: Choose whether to make the token immutable, and whether to
+          revoke freeze authority and mint authority.
+        </li>
+        <li>
+          Click on "Create Token" and accept the transaction to complete the
+          process.
+        </li>
       </div>
-      
-        <Sectionhead>
-          <Fragment slot="title">Frequently Asked Questions (FAQ)</Fragment>
-        </Sectionhead>
-        
+
+      <Sectionhead>
+        <Fragment slot="title">Frequently Asked Questions (FAQ)</Fragment>
+      </Sectionhead>
+      <div class="faq">
         <div class="relative z-0 mb-5 group">
           <details class="mb-4">
-            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
-              What is a token?
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is the purpose of this form?
             </summary>
             <p class="mt-2 text-sm text-gray-500">
-              A token is a digital asset that represents a certain value, utility, or other attributes. Tokens can be used for various purposes in blockchain networks, including transactions, rewards, governance, and more.
+              This form is designed to help you create a custom cryptocurrency
+              token on either the Mainnet or Devnet. You can specify the token's
+              name, symbol, initial supply, and other attributes.
             </p>
           </details>
         </div>
-        
+
         <div class="relative z-0 mb-5 group">
           <details class="mb-4">
-            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
-              What is the initial supply?
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What are the required fields?
             </summary>
             <p class="mt-2 text-sm text-gray-500">
-              The initial supply is the total number of tokens that will be created when the token is generated. This amount can be distributed or reserved according to your project's needs.
+              The following fields are required: Network (Mainnet or Devnet),
+              Token Name, Token Symbol, Initial Supply, Decimals, Token
+              Description, Token Logo (file upload).
             </p>
           </details>
         </div>
-        
+
         <div class="relative z-0 mb-5 group">
           <details class="mb-4">
-            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
-              What are decimals in a token?
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How do I select the network for my token?
             </summary>
             <p class="mt-2 text-sm text-gray-500">
-              Decimals determine the smallest unit of the token that can be transacted. For example, if a token has 6 decimals, the smallest unit that can be transacted is 0.000001 of that token.
+              Use the dropdown menu under the "Network" field to select either
+              Mainnet or Devnet. This choice will determine where your token
+              will be deployed.
             </p>
           </details>
         </div>
-        
+
         <div class="relative z-0 mb-5 group">
           <details class="mb-4">
-            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
-              How can I revoke minting authority?
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What should I enter for the 'Token Name' and 'Token Symbol'?
             </summary>
             <p class="mt-2 text-sm text-gray-500">
-              Revoking minting authority means that no more tokens can be created after the initial supply. This is a security feature that ensures the total supply remains fixed.
+              Token Name: Enter the full name of your token (e.g., "MyToken").
+              Token Symbol: Enter a short, unique identifier for your token
+              (e.g., "MTK").
             </p>
           </details>
         </div>
-        
+
         <div class="relative z-0 mb-5 group">
           <details class="mb-4">
-            <summary class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
-              How do I include media links in my token information?
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is 'Initial Supply'?
             </summary>
             <p class="mt-2 text-sm text-gray-500">
-              You can include media links such as your project's website, Telegram, or Twitter handles by enabling the "Include Media" option in the form. This adds fields where you can enter the relevant URLs.
+              The initial supply is the total number of tokens that will be
+              created at the time of deployment. This number can be set
+              according to your needs.
             </p>
           </details>
         </div>
-      
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What are 'Decimals'?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              Decimals determine the smallest unit your token can be divided
+              into. For example, if you set decimals to 2, your token can be
+              split into 100 smaller units.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              Can I add a description of my token?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              Yes, you can provide a detailed description in the "Token
+              Description" field to explain the purpose and utility of your
+              token.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is the 'Include Media' option?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              If you want to include additional media links like a website,
+              Telegram, or Twitter, you can check the "Include Media" box. This
+              will reveal additional fields for you to enter these details.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What tags should I choose?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              You can select up to 3 tags that best describe your token's
+              category or purpose. Available tags include "Meme," "Airdrop,"
+              "Tokenization," and "NFT."
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How do I upload a logo for my token?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              Use the "Upload file" field to select and upload an image file
+              that will serve as your token's logo. This logo will be displayed
+              as a preview once uploaded.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What are 'Revoke Mint Authority' and 'Revoke Freeze Authority'?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              These options allow you to revoke your ability to mint or freeze
+              tokens after they are created. Enabling these options costs 0.05
+              SOL each.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is 'Custom Creator Info'?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              If you enable this option, you can specify custom information
+              about the creator of the token, such as the creator's name and
+              website.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How do I connect my wallet?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              To connect your wallet, you need to have a Phantom wallet. Click
+              the "Connect Wallet" button at the bottom of the form to link your
+              Phantom wallet. If you don't have a Phantom wallet, you'll need to <a
+                href="https://phantom.app/download"
+                class="text-blue-600 hover:underline"
+                target="_blank">download</a
+              > and set it up first. This connection is necessary for token creation
+              and transactions.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How do I submit the form?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              After filling out all required fields, click the "Submit" button
+              to create your token. Ensure that your wallet is connected before
+              submission.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What is the cost of creating a token?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              The cost is displayed as 0.05 SOL, with a limited-time offer
+              showing a 90% discount from the original price of 0.5 SOL.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              Why is there a countdown timer on the page?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              The countdown timer indicates the time remaining for the
+              limited-time offer. After the timer expires, the offer may no
+              longer be available.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              What should I do if I encounter an error?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              If an error occurs, it will be displayed in the "error-handling"
+              section below the token logo preview. Check this area for details
+              on how to resolve the issue.
+            </p>
+          </details>
+        </div>
+
+        <div class="relative z-0 mb-5 group">
+          <details class="mb-4">
+            <summary
+              class="cursor-pointer font-medium text-gray-900 text-sm py-2 border-b-2 border-gray-300 focus:outline-none focus:border-blue-600 peer">
+              How is my data secured?
+            </summary>
+            <p class="mt-2 text-sm text-gray-500">
+              All interactions with this form, including wallet connections and
+              data entry, are handled securely to protect your information and
+              assets.
+            </p>
+          </details>
+        </div>
+      </div>
+
       <div
         id="notification"
         class="fixed top-4 right-4 p-4 rounded-md shadow-lg text-white hidden">
@@ -481,43 +706,45 @@ import solicon from "@assets/iconSol.svg";
 
       <script>
         // ابتدا بررسی می‌کنیم که آیا تاریخ پایان تایمر در Local Storage ذخیره شده است یا نه
-        var countDownDate = localStorage.getItem('countDownDate');
-      
+        var countDownDate = localStorage.getItem("countDownDate");
+
         // اگر تاریخ ذخیره نشده بود، آن را تنظیم کرده و در Local Storage ذخیره می‌کنیم
         if (!countDownDate) {
           countDownDate = new Date().getTime() + 7 * 24 * 60 * 60 * 1000; // یک هفته از زمان فعلی
-          localStorage.setItem('countDownDate', countDownDate);
+          localStorage.setItem("countDownDate", countDownDate);
         } else {
           countDownDate = parseInt(countDownDate, 10);
         }
-      
+
         // به روز رسانی تایمر هر یک ثانیه
         var x = setInterval(function () {
           // دریافت زمان فعلی
           var now = new Date().getTime();
-      
+
           // محاسبه فاصله زمانی بین زمان فعلی و تاریخ پایان تایمر
           var distance = countDownDate - now;
-      
+
           // محاسبه روزها، ساعت‌ها، دقیقه‌ها و ثانیه‌ها
           var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
           var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
+
           // نمایش نتیجه در عنصری با id="timer"
           document.getElementById("timer").innerHTML =
             days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-      
+
           // اگر تایمر تمام شد، متن "EXPIRED" را نمایش می‌دهیم
           if (distance < 0) {
             clearInterval(x);
             document.getElementById("timer").innerHTML = "EXPIRED";
-            localStorage.removeItem('countDownDate'); // حذف تاریخ پایان تایمر از Local Storage
+            localStorage.removeItem("countDownDate"); // حذف تاریخ پایان تایمر از Local Storage
           }
         }, 1000);
       </script>
-      
+
       <script src="../jsFile/createToken.js"></script>
       <script src="../jsFile/tagInput.js"></script>
     </div>
